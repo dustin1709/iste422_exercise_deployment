@@ -1,0 +1,21 @@
+plugins {
+	id 'java'
+	id 'application'
+}
+
+ext {
+	javaMainClass = 'RunEdgeConvert'
+}
+
+application{
+	mainClassName = javaMainClass
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation 'junit:junit:4.12'
+	implementation 'org.hamcrest:hamcrest-core:1.3'
+}
