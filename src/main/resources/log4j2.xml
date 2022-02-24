@@ -13,9 +13,5 @@
             <AppenderRef ref="Console" level="info"/>
             <AppenderRef ref="MyFile" level="debug"/>
         </Root>
-        <Logger name="SavingsAccount" level="debug" additivity="false">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="MyFile" level="debug"/>
-        </Logger>
     </Loggers>
 </Configuration>
