@@ -15,13 +15,16 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
    protected String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
    protected StringBuffer sb;
 
+   Logger logger = LogManager.getLogger(CreateDDLMySQL.class.getName());
+
    public CreateDDLMySQL(EdgeTable[] inputTables, EdgeField[] inputFields) {
       super(inputTables, inputFields);
       sb = new StringBuffer();
+      logger.debug("Creating CreateDDLMySQL object using " + inputTables.toString() + " and " + inputFields.toString());
    } //CreateDDLMySQL(EdgeTable[], EdgeField[])
    
    public CreateDDLMySQL() { //default constructor with empty arg list for to allow output dir to be set before there are table and field objects
-      
+      logger.debug("Creating CreateDDLMySQL object with no args");
    }
    
    public void createDDL() {
@@ -104,6 +107,7 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
    }
 
    protected int convertStrBooleanToInt(String input) { //MySQL uses '1' and '0' for boolean types
+      logger.debug("ConvertingStrBooleanToInt accepts input: " + input);
       if (input.equals("true")) {
          return 1;
       } else {
@@ -114,7 +118,6 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
    public String generateDatabaseName() { //prompts user for database name
       String dbNameDefault = "MySQLDB";
       //String databaseName = "";
-
       do {
          databaseName = (String)JOptionPane.showInputDialog(
                        null,
@@ -132,6 +135,7 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
             JOptionPane.showMessageDialog(null, "You must select a name for your database.");
          }
       } while (databaseName.equals(""));
+      logger.debug(String.format("Starting generateDatabaseName() - databaseName equals " + databaseName));
       return databaseName;
    }
    
