@@ -45,7 +45,7 @@ public class EdgeConvertFileParser {
    }
 
    public void parseEdgeFile() throws IOException {
-      logger.debug(String.format("Parsing through file"));
+      logger.debug(String.format("Parsing through the file"));
       while ((currentLine = br.readLine()) != null) {
          currentLine = currentLine.trim();
          if (currentLine.startsWith("Figure ")) { //this is the start of a Figure entry
@@ -205,7 +205,7 @@ public class EdgeConvertFileParser {
       currentLine = br.readLine();
       currentLine = br.readLine(); //this should be "Table: "
       while (currentLine.startsWith("Table: ")) {
-         logger.debug(String.format("parsing through saved file that starts with Table"));
+         logger.debug(String.format("parsing through the  saved file that starts with Table"));
          numFigure = Integer.parseInt(currentLine.substring(currentLine.indexOf(" ") + 1)); //get the Table number
          currentLine = br.readLine(); //this should be "{"
          currentLine = br.readLine(); //this should be "TableName"
@@ -312,12 +312,12 @@ public class EdgeConvertFileParser {
          }
       } // try
       catch (FileNotFoundException fnfe) {
-         logger.error(String.format("File not found "));
+         logger.error(String.format(" File not found "));
          System.out.println("Cannot find \"" + inputFile.getName() + "\".");
          System.exit(0);
       } // catch FileNotFoundException
       catch (IOException ioe) {
-         logger.error(String.format("inproper data inputted "));
+         logger.error(String.format("Inproper data inputted "));
          System.out.println(ioe);
          System.exit(0);
       } // catch IOException

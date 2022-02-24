@@ -32,7 +32,7 @@ public abstract class EdgeConvertCreateDDL {
       numBoundTables = new int[tables.length];
       maxBound = 0;
       sb = new StringBuffer();
-         logger.debug(String.format("list through tables and grab related fields "));
+      logger.debug(String.format("list through tables and grab related fields "));
 
       for (int i = 0; i < tables.length; i++) { //step through list of tables
          int numBound = 0; //initialize counter for number of bound tables
