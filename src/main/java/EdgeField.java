@@ -1,3 +1,6 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.StringTokenizer;
 
 public class EdgeField {
@@ -6,6 +9,8 @@ public class EdgeField {
    private boolean disallowNull, isPrimaryKey;
    private static String[] strDataType = {"Varchar", "Boolean", "Integer", "Double"};
    public static final int VARCHAR_DEFAULT_LENGTH = 1;
+   
+   Logger logger = LogManager.getLogger(EdgeField.class.getName());
    
    public EdgeField(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
@@ -19,6 +24,7 @@ public class EdgeField {
       defaultValue = "";
       varcharValue = VARCHAR_DEFAULT_LENGTH;
       dataType = 0;
+      logger.info(String.format("EdgeField takes in " + inputString));
    }
    
    public int getNumFigure() {

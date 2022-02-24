@@ -1,3 +1,6 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class EdgeTable {
@@ -6,12 +9,15 @@ public class EdgeTable {
    private ArrayList alRelatedTables, alNativeFields;
    private int[] relatedTables, relatedFields, nativeFields;
    
+   Logger logger = LogManager.getLogger(EdgeTable.class.getName());
+
    public EdgeTable(String inputString) {
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numFigure = Integer.parseInt(st.nextToken());
       name = st.nextToken();
       alRelatedTables = new ArrayList();
       alNativeFields = new ArrayList();
+      logger.info(String.format("EdgeField takes in " + inputString));
    }
    
    public int getNumFigure() {
