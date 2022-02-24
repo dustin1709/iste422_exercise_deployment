@@ -7,6 +7,6 @@ public class RunEdgeConvert {
 
    public static void main(String[] args) {
       EdgeConvertGUI edge = new EdgeConvertGUI();
-      logger.info(String.format("Starting Edge Converter"));
+      logger.debug(String.format("Starting Edge Converter"));
    }
 }
