@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public abstract class EdgeConvertCreateDDL {
-      public static Logger logger = LogManager.getLogger(EdgeConnector.class.getName());
+      public static Logger logger = LogManager.getLogger(EdgeConvertCreateDDL.class.getName());
 
    static String[] products = {"MySQL"};
    protected EdgeTable[] tables; //master copy of EdgeTable objects
