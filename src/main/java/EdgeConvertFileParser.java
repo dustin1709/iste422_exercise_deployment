@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 public class EdgeConvertFileParser {
    //private String filename = "test.edg";
 
-   public static java.util.logging.Logger logger = LogManager.getLogger(EdgeConvertFileParser.class.getName());
+      public static Logger logger = LogManager.getLogger(EdgeConvertFileParser.class.getName());
 
    private File parseFile;
    private FileReader fr;
