@@ -1,9 +1,14 @@
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EdgeConvertFileParser {
    //private String filename = "test.edg";
+
+   public static java.util.logging.Logger logger = LogManager.getLogger(EdgeConvertFileParser.class.getName());
+
    private File parseFile;
    private FileReader fr;
    private BufferedReader br;
@@ -25,7 +30,7 @@ public class EdgeConvertFileParser {
    public static final String EDGE_ID = "EDGE Diagram File"; //first line of .edg files should be this
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
    public static final String DELIM = "|";
-   
+
    public EdgeConvertFileParser(File constructorFile) {
       numFigure = 0;
       numConnector = 0;
@@ -40,6 +45,7 @@ public class EdgeConvertFileParser {
    }
 
    public void parseEdgeFile() throws IOException {
+      logger.debug(String.format("Parsing through the file"));
       while ((currentLine = br.readLine()) != null) {
          currentLine = currentLine.trim();
          if (currentLine.startsWith("Figure ")) { //this is the start of a Figure entry
@@ -129,6 +135,7 @@ public class EdgeConvertFileParser {
    } // parseEdgeFile()
    
    private void resolveConnectors() { //Identify nature of Connector endpoints
+      logger.debug(String.format("Connector endpoints "));
       int endPoint1, endPoint2;
       int fieldIndex = 0, table1Index = 0, table2Index = 0;
       for (int cIndex = 0; cIndex < connectors.length; cIndex++) {
@@ -198,6 +205,7 @@ public class EdgeConvertFileParser {
       currentLine = br.readLine();
       currentLine = br.readLine(); //this should be "Table: "
       while (currentLine.startsWith("Table: ")) {
+         logger.debug(String.format("parsing through the  saved file that starts with Table"));
          numFigure = Integer.parseInt(currentLine.substring(currentLine.indexOf(" ") + 1)); //get the Table number
          currentLine = br.readLine(); //this should be "{"
          currentLine = br.readLine(); //this should be "TableName"
@@ -304,10 +312,12 @@ public class EdgeConvertFileParser {
          }
       } // try
       catch (FileNotFoundException fnfe) {
+         logger.error(String.format(" File not found "));
          System.out.println("Cannot find \"" + inputFile.getName() + "\".");
          System.exit(0);
       } // catch FileNotFoundException
       catch (IOException ioe) {
+         logger.error(String.format("Inproper data inputted "));
          System.out.println(ioe);
          System.exit(0);
       } // catch IOException
