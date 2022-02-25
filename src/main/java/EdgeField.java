@@ -10,9 +10,12 @@ public class EdgeField {
    private static String[] strDataType = {"Varchar", "Boolean", "Integer", "Double"};
    public static final int VARCHAR_DEFAULT_LENGTH = 1;
    
-   Logger logger = LogManager.getLogger(EdgeField.class.getName());
+   public static Logger logger = LogManager.getLogger(EdgeField.class.getName());
    
    public EdgeField(String inputString) {
+      
+      logger.debug(String.format("EdgeField accepts " + inputString));
+      
       StringTokenizer st = new StringTokenizer(inputString, EdgeConvertFileParser.DELIM);
       numFigure = Integer.parseInt(st.nextToken());
       name = st.nextToken();
@@ -24,7 +27,6 @@ public class EdgeField {
       defaultValue = "";
       varcharValue = VARCHAR_DEFAULT_LENGTH;
       dataType = 0;
-      logger.info(String.format("EdgeField takes in " + inputString));
    }
    
    public int getNumFigure() {
