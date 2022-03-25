@@ -1,0 +1,45 @@
+U21:01:24.463 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.467 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.468 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.468 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.469 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.469 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.470 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.470 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.471 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.471 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+O21:01:24.472 [Test worker] WARN  EdgeConnectorTest - No Number Connector Value
+U21:01:24.472 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.473 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.473 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.473 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+	U21:01:24.474 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+	f21:01:24.474 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+
+U21:01:24.475 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+
+f21:01:24.475 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+U21:01:24.476 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.476 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+N21:01:24.476 [Test worker] INFO  EdgeConnectorTest - Setting EP1 Table: false
+M21:01:24.477 [Test worker] DEBUG EdgeConnectorTest - EP1 Table is now: false
+J21:01:24.477 [Test worker] INFO  EdgeConnector - Setting EP1 Field: false
+I21:01:24.477 [Test worker] DEBUG EdgeConnector - EP1 Field is now: false
+U21:01:24.478 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.478 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+N21:01:24.478 [Test worker] INFO  EdgeConnectorTest - Setting EP1 Table: false
+M21:01:24.479 [Test worker] DEBUG EdgeConnectorTest - EP1 Table is now: false
+J21:01:24.479 [Test worker] INFO  EdgeConnector - Setting EP1 Table: false
+I21:01:24.479 [Test worker] DEBUG EdgeConnector - EP1 Table is now: false
+U21:01:24.480 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.480 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+N21:01:24.480 [Test worker] INFO  EdgeConnectorTest - Setting EP2 Field: false
+M21:01:24.481 [Test worker] DEBUG EdgeConnectorTest - EP2 Field is now: false
+J21:01:24.481 [Test worker] INFO  EdgeConnector - Setting EP2 Field: false
+I21:01:24.481 [Test worker] DEBUG EdgeConnector - EP2 Field is now: false
+U21:01:24.482 [Test worker] DEBUG EdgeConnectorTest - Setting up Test Edge Connector.
+f21:01:24.482 [Test worker] DEBUG EdgeConnector - Connecting to Edge File: 1|2|3|testStyle1|testStyle2
+N21:01:24.482 [Test worker] INFO  EdgeConnectorTest - Setting EP2 Table: false
+M21:01:24.483 [Test worker] DEBUG EdgeConnectorTest - EP2 Table is now: false
+J21:01:24.483 [Test worker] INFO  EdgeConnector - Setting EP2 Table: false
+I21:01:24.484 [Test worker] DEBUG EdgeConnector - EP2 Table is now: false
