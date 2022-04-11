@@ -31,6 +31,8 @@ public class EdgeConvertFileParser {
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
    public static final String DELIM = "|";
 
+   // Constructor
+   
    public EdgeConvertFileParser(File constructorFile) {
       numFigure = 0;
       numConnector = 0;
@@ -43,6 +45,208 @@ public class EdgeConvertFileParser {
       numLine = 0;
       this.openFile(parseFile);
    }
+
+   // Getters & Setters
+
+   // al fields 
+
+   public ArrayList getAlTables() {
+      return alTables;
+   }
+
+   public void setAlTables(ArrayList alTables) { 
+      this.alTables = alTables; 
+   }
+
+   public ArrayList getAlFields() {
+      return alFields;
+   }
+
+   public ArrayList getAlConnectors() {
+      return alConnectors;
+   }
+
+   // num fields
+
+   public int getNumFields() { 
+      return numFields; 
+   }
+
+   public void setNumFields(int numFields) { 
+      this.numFields = numFields; 
+   }
+
+   public int getNumTables() { 
+      return numTables; 
+   }
+
+   public void setNumTables(int numTables) { 
+      this.numTables = numTables;
+   }
+
+   public int getNumFigure() {
+      return numFigure;
+   }
+
+   public void setNumFigure(int numFigure) { 
+      this.numFigure = numFigure; 
+   }
+
+   public int getNumConnector() {
+      return numConnector;
+   }
+
+   public void setNumConnector(int numConnector) { 
+      this.numConnector = numConnector; 
+   }
+
+   // general fields
+
+   public EdgeTable[] getTables() { 
+      return tables; 
+   }
+
+   public EdgeTable[] getEdgeTables() {
+      return tables;
+   }
+
+   public EdgeField[] getFields() {
+      return fields;
+   }
+
+   public EdgeField[] getEdgeFields() {
+      return fields;
+   }
+
+   public EdgeConnector[] getConnectors() {
+      return connectors;
+   }
+   
+   public String getTableName() { 
+      return tableName;   
+   }
+
+   public void setTableName(String tableName) { 
+      this.tableName = tableName;
+   }
+
+   public String getFieldName() { 
+      return fieldName; 
+   }
+
+   public void setFieldName(String fieldName) { 
+      this.fieldName = fieldName; 
+   }
+
+   public String getStyle() { 
+      return style; 
+   }
+
+   public void setStyle(String style) { 
+      this.style = style; 
+   }
+
+   public boolean getIsEntity() {
+      return isEntity;
+   }
+
+   public void setIsEntity(boolean isEntity) { 
+      this.isEntity = isEntity; 
+   }
+
+   public boolean getIsAttribute() {
+      return isAttribute;
+   }
+
+   public void setIsAttribute(boolean isAttribute) { 
+      this.isAttribute = isAttribute; 
+   }
+
+   public File getParseFile() {
+      return parseFile;
+   }
+
+   public int getNumLine() {
+      return numLine;
+   }
+
+   public FileReader getFileReader() {
+      return fr;
+   }
+
+   public BufferedReader getBufferedReader() {
+      return br;
+   }
+
+   public String getText() {
+      return text;
+   }
+
+   public void setText(String text) { 
+      this.text = text; 
+   }
+
+   public String getCurrentLine() { 
+      return currentLine; 
+   }
+
+   public void setCurrentLine(String currentLine) { 
+      this.currentLine = currentLine; 
+   }
+
+   public EdgeField getTempField() { 
+      return tempField; 
+   }
+
+   public void setTempField(EdgeField tempField) { 
+      this.tempField = tempField; 
+   }
+
+   public boolean getIsUnderlined() { 
+      return isUnderlined; 
+   }
+
+   public void setIsUnderlined(boolean isUnderlined) { 
+      this.isUnderlined = isUnderlined; 
+   }
+
+   // endpoints
+
+   public int getEndPoint1() {
+      return endPoint1;
+   }
+
+   public void setEndPoint1(int endPoint1) { 
+      this.endPoint1 = endPoint1; 
+   }
+
+   public void setEndPoint2(int endPoint2) { 
+      this.endPoint2 = endPoint2; 
+   }
+
+   public int getEndPoint2() {
+      return endPoint2;
+   }
+
+   // endstyles
+
+   public String getEndStyle1() { 
+      return endStyle1; 
+   }
+
+   public void setEndStyle1(String endStyle1) { 
+      this.endStyle1 = endStyle1; 
+   }
+
+   public String getEndStyle2() { 
+      return endStyle2; 
+   }
+
+   public void setEndStyle2(String endStyle2) { 
+      this.endStyle2 = endStyle2; 
+   }
+
+   // Methods
 
    public void parseEdgeFile() throws IOException {
       logger.debug(String.format("Parsing through the file"));
