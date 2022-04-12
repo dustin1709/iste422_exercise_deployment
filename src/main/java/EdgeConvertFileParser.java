@@ -7,23 +7,17 @@ import org.apache.logging.log4j.Logger;
 public class EdgeConvertFileParser {
    //private String filename = "test.edg";
 
-      public static Logger logger = LogManager.getLogger(EdgeConvertFileParser.class.getName());
+   public static Logger logger = LogManager.getLogger(EdgeConvertFileParser.class.getName());
 
    private File parseFile;
    private FileReader fr;
    private BufferedReader br;
-   private String currentLine;
    private ArrayList alTables, alFields, alConnectors;
    private EdgeTable[] tables;
    private EdgeField[] fields;
    private EdgeField tempField;
    private EdgeConnector[] connectors;
-   private String style;
-   private String text;
-   private String tableName;
-   private String fieldName;
-   private boolean isEntity, isAttribute, isUnderlined = false;
-   private int numFigure, numConnector, numFields, numTables, numNativeRelatedFields;
+   private int numFigure, numConnector, numFields, numTables;
    private int endPoint1, endPoint2;
    private int numLine;
    private String endStyle1, endStyle2;
@@ -39,8 +33,6 @@ public class EdgeConvertFileParser {
       alTables = new ArrayList();
       alFields = new ArrayList();
       alConnectors = new ArrayList();
-      isEntity = false;
-      isAttribute = false;
       parseFile = constructorFile;
       numLine = 0;
       this.openFile(parseFile);
@@ -121,46 +113,6 @@ public class EdgeConvertFileParser {
    public EdgeConnector[] getConnectors() {
       return connectors;
    }
-   
-   public String getTableName() { 
-      return tableName;   
-   }
-
-   public void setTableName(String tableName) { 
-      this.tableName = tableName;
-   }
-
-   public String getFieldName() { 
-      return fieldName; 
-   }
-
-   public void setFieldName(String fieldName) { 
-      this.fieldName = fieldName; 
-   }
-
-   public String getStyle() { 
-      return style; 
-   }
-
-   public void setStyle(String style) { 
-      this.style = style; 
-   }
-
-   public boolean getIsEntity() {
-      return isEntity;
-   }
-
-   public void setIsEntity(boolean isEntity) { 
-      this.isEntity = isEntity; 
-   }
-
-   public boolean getIsAttribute() {
-      return isAttribute;
-   }
-
-   public void setIsAttribute(boolean isAttribute) { 
-      this.isAttribute = isAttribute; 
-   }
 
    public File getParseFile() {
       return parseFile;
@@ -178,36 +130,12 @@ public class EdgeConvertFileParser {
       return br;
    }
 
-   public String getText() {
-      return text;
-   }
-
-   public void setText(String text) { 
-      this.text = text; 
-   }
-
-   public String getCurrentLine() { 
-      return currentLine; 
-   }
-
-   public void setCurrentLine(String currentLine) { 
-      this.currentLine = currentLine; 
-   }
-
    public EdgeField getTempField() { 
       return tempField; 
    }
 
    public void setTempField(EdgeField tempField) { 
       this.tempField = tempField; 
-   }
-
-   public boolean getIsUnderlined() { 
-      return isUnderlined; 
-   }
-
-   public void setIsUnderlined(boolean isUnderlined) { 
-      this.isUnderlined = isUnderlined; 
    }
 
    // endpoints
@@ -250,6 +178,7 @@ public class EdgeConvertFileParser {
 
    public void parseEdgeFile() throws IOException {
       logger.debug(String.format("Parsing through the file"));
+      String currentLine;
       while ((currentLine = br.readLine()) != null) {
          currentLine = currentLine.trim();
          if (currentLine.startsWith("Figure ")) { //this is the start of a Figure entry
@@ -259,7 +188,11 @@ public class EdgeConvertFileParser {
             if (!currentLine.startsWith("Style")) { // this is to weed out other Figures, like Labels
                continue;
             } else {
-               style = currentLine.substring(currentLine.indexOf("\"") + 1, currentLine.lastIndexOf("\"")); //get the Style parameter
+               boolean isUnderlined = false;
+               boolean isEntity = false;
+               boolean isAttribute = false;
+
+               String style = currentLine.substring(currentLine.indexOf("\"") + 1, currentLine.lastIndexOf("\"")); //get the Style parameter
                if (style.startsWith("Relation")) { //presence of Relations implies lack of normalization
                   JOptionPane.showMessageDialog(null, "The Edge Diagrammer file\n" + parseFile + "\ncontains relations.  Please resolve them and try again.");
                   EdgeConvertGUI.setReadSuccess(false);
@@ -275,7 +208,7 @@ public class EdgeConvertFileParser {
                   continue;
                }
                currentLine = br.readLine().trim(); //this should be Text
-               text = currentLine.substring(currentLine.indexOf("\"") + 1, currentLine.lastIndexOf("\"")).replaceAll(" ", ""); //get the Text parameter
+               String text = currentLine.substring(currentLine.indexOf("\"") + 1, currentLine.lastIndexOf("\"")).replaceAll(" ", ""); //get the Text parameter
                if (text.equals("")) {
                   JOptionPane.showMessageDialog(null, "There are entities or attributes with blank names in this diagram.\nPlease provide names for them and try again.");
                   EdgeConvertGUI.setReadSuccess(false);
@@ -406,14 +339,14 @@ public class EdgeConvertFileParser {
       StringTokenizer stTables, stNatFields, stRelFields, stNatRelFields, stField;
       EdgeTable tempTable;
       EdgeField tempField;
-      currentLine = br.readLine();
+      String currentLine = br.readLine();
       currentLine = br.readLine(); //this should be "Table: "
       while (currentLine.startsWith("Table: ")) {
          logger.debug(String.format("parsing through the  saved file that starts with Table"));
          numFigure = Integer.parseInt(currentLine.substring(currentLine.indexOf(" ") + 1)); //get the Table number
          currentLine = br.readLine(); //this should be "{"
          currentLine = br.readLine(); //this should be "TableName"
-         tableName = currentLine.substring(currentLine.indexOf(" ") + 1);
+         String tableName = currentLine.substring(currentLine.indexOf(" ") + 1);
          tempTable = new EdgeTable(numFigure + DELIM + tableName);
          
          currentLine = br.readLine(); //this should be the NativeFields list
@@ -447,7 +380,7 @@ public class EdgeConvertFileParser {
       while ((currentLine = br.readLine()) != null) {
          stField = new StringTokenizer(currentLine, DELIM);
          numFigure = Integer.parseInt(stField.nextToken());
-         fieldName = stField.nextToken();
+         String fieldName = stField.nextToken();
          tempField = new EdgeField(numFigure + DELIM + fieldName);
          tempField.setTableID(Integer.parseInt(stField.nextToken()));
          tempField.setTableBound(Integer.parseInt(stField.nextToken()));
@@ -485,20 +418,12 @@ public class EdgeConvertFileParser {
       return false;
    }
    
-   public EdgeTable[] getEdgeTables() {
-      return tables;
-   }
-   
-   public EdgeField[] getEdgeFields() {
-      return fields;
-   }
-   
    public void openFile(File inputFile) {
       try {
          fr = new FileReader(inputFile);
          br = new BufferedReader(fr);
          //test for what kind of file we have
-         currentLine = br.readLine().trim();
+         String currentLine = br.readLine().trim();
          numLine++;
          if (currentLine.startsWith(EDGE_ID)) { //the file chosen is an Edge Diagrammer file
             this.parseEdgeFile(); //parse the file
@@ -521,7 +446,7 @@ public class EdgeConvertFileParser {
          System.exit(0);
       } // catch FileNotFoundException
       catch (IOException ioe) {
-         logger.error(String.format("Inproper data inputted "));
+         logger.error(String.format("Improper data inputted "));
          System.out.println(ioe);
          System.exit(0);
       } // catch IOException
