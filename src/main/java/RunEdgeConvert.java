@@ -6,7 +6,7 @@ public class RunEdgeConvert {
    public static Logger logger = LogManager.getLogger(RunEdgeConvert.class.getName());
 
    public static void main(String[] args) {
-      EdgeConvertGUI edge = new EdgeConvertGUI();
+      new EdgeConvertGUI();
       logger.debug(String.format("Starting Edge Converter"));
    }
 }
