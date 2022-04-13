@@ -33,7 +33,7 @@ public abstract class EdgeConvertFileParser {
 
    // Constructor
    
-   public EdgeConvertFileParser(File constructorFile) {
+   public  EdgeConvertFileParser(File constructorFile) {
       numFigure = 0;
       numConnector = 0;
       alTables = new ArrayList();
@@ -46,7 +46,7 @@ public abstract class EdgeConvertFileParser {
       this.openFile(parseFile);
    }
    
-   private void resolveConnectors() { //Identify nature of Connector endpoints
+   public void resolveConnectors() { //Identify nature of Connector endpoints
       logger.debug(String.format("Connector endpoints "));
       int endPoint1, endPoint2;
       int fieldIndex = 0, table1Index = 0, table2Index = 0;
@@ -215,5 +215,23 @@ public abstract class EdgeConvertFileParser {
    public String getEndStyle2() { return endStyle2; }
 
    public String getFieldName() { return fieldName; }
+   public EdgeConnector[] getConnectors() {
+      return connectors;
+   }
+      public ArrayList getAlConnectors() {
+      return alConnectors;
+   }
+   public void setNumConnector(int numConnector) { this.numConnector = numConnector; }
+   public void setIsEntity(boolean isEntity) { this.isEntity = isEntity; }
+   public boolean getIsAttribute() {
+      return isAttribute;
+   }
+  public void setIsAttribute(boolean isAttribute) { this.isAttribute = isAttribute; }
+  public boolean getIsEntity() {
+      return isEntity;
+   }
+   public String getStyle() { return style; }
+   public void setStyle(String style) { this.style = style; }
+
 
 } // EdgeConvertFileHandler

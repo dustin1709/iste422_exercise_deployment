@@ -3,7 +3,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class EdgeConnector {
-
    public static Logger logger = LogManager.getLogger(EdgeConnector.class.getName());
 
    private int numConnector, endPoint1, endPoint2;
