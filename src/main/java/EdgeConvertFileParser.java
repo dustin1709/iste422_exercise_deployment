@@ -31,6 +31,8 @@ public abstract class EdgeConvertFileParser {
    public static final String SAVE_ID = "EdgeConvert Save File"; //first line of save files should be this
    public static final String DELIM = "|";
 
+   // Constructor
+   
    public EdgeConvertFileParser(File constructorFile) {
       numFigure = 0;
       numConnector = 0;
@@ -43,7 +45,6 @@ public abstract class EdgeConvertFileParser {
       numLine = 0;
       this.openFile(parseFile);
    }
-
    
    private void resolveConnectors() { //Identify nature of Connector endpoints
       logger.debug(String.format("Connector endpoints "));
