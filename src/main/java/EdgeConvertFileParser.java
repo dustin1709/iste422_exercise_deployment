@@ -222,6 +222,7 @@ public abstract class EdgeConvertFileParser {
       return alConnectors;
    }
    public void setNumConnector(int numConnector) { this.numConnector = numConnector; }
+   public int getNumConnector() { return this.numConnector; }
    public void setIsEntity(boolean isEntity) { this.isEntity = isEntity; }
    public boolean getIsAttribute() {
       return isAttribute;
@@ -232,6 +233,8 @@ public abstract class EdgeConvertFileParser {
    }
    public String getStyle() { return style; }
    public void setStyle(String style) { this.style = style; }
+
+   public File getParseFile() { return this.parseFile; }
 
 
 } // EdgeConvertFileHandler
