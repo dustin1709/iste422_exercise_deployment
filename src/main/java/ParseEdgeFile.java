@@ -110,7 +110,7 @@ public class ParseEdgeFile extends EdgeConvertFileParser {
       }
     }
 
-    public boolean isTableDup(String testTableName) {`
+    public boolean isTableDup(String testTableName) {
         //TODO: Check if duplicate table
            for (int i = 0; i < super.getAlTables().size(); i++) {
          EdgeTable tempTable = (EdgeTable)super.getAlTables().get(i);
