@@ -6,12 +6,12 @@ rm -f *.class
 find . -name \*.class -exec rm {} \;
 
 echo "Compiling source code and unit tests..."
-javac -d ./build -cp lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:lib/log4j-api-2.17.1.jar:lib/log4j-core-2.17.1.jar src/*/java/*.java
+javac -d ./build -cp lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:lib/log4j-api-2.12.4.jar:lib/log4j-core-2.12.4.jar src/*/java/*.java
 if [ $? -ne 0 ] ; then echo BUILD FAILED!; exit 1; fi
 
 echo "Running unit tests..."
-java -cp build:lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:lib/log4j-api-2.17.1.jar:lib/log4j-core-2.17.1.jar org.junit.runner.JUnitCore EdgeConnectorTest
+java -cp build:lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:lib/log4j-api-2.12.4.jar:lib/log4j-core-2.12.4.jar org.junit.runner.JUnitCore EdgeConnectorTest
 if [ $? -ne 0 ] ; then echo TESTS FAILED!; exit 1; fi
 
 echo "Running application..."
-java -cp ./build:lib/log4j-api-2.17.1.jar:lib/log4j-core-2.17.1.jar RunEdgeConvert
+java -cp ./build:lib/log4j-api-2.12.4.jar:lib/log4j-core-2.12.4.jar RunEdgeConvert
